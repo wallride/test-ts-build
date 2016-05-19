@@ -1,0 +1,30 @@
+{
+  "name": "test-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 6.2.0"
+  },
+  "scripts": {
+    "clear-tsc": "rm -rf ./build && rm -rf ./tests/build",
+    "tsc": "node build",
+    "test": "mocha ./tests/build/index",
+    "build-test-a": "npm run clear-tsc && npm run tsc && npm test",
+    "prepublish": "npm run build-test-a"
+  },
+  "main": "build/index.js",
+  "typescript": {
+    "definition": "build/index.d.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "typescript": "next"
+  },
+  "dependencies": {
+    "amqplib": "^0.4.1",
+    "moment": "^2.13.0"
+  }
+}
