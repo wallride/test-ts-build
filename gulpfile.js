@@ -1,58 +1,29 @@
-var gulp = require("gulp");
-var ts = require("gulp-typescript");
-var exec = require('child_process').exec;
+let gulp = require("gulp");
 
-let srcPath = __dirname+'/src/';
+gulp.task('src', function () {
+    let ts = require("gulp-typescript");
+    var merge = require('merge2');
 
-console.log('!!!!!!!!!!!!!!!', srcPath)
-
-var tsProject = ts.createProject(srcPath+"tsconfig.json", {typescript: require('typescript')});
-
-gulp.task('src', function (done) {
-    // gulp.src(path + "src/**/*.ts")
-    //     .pipe(ts(tsProject))
-    //     .js
-    //     .pipe(gulp.dest(path+'/build'))
-    //     .on('end', function(){ console.log('done', path); done();})
-    // ;
-
-    // var tsResult = tsProject.src('!*.d.ts') // instead of gulp.src(...)
-    //     .pipe(ts(tsProject));
-    //
-    // tsResult.js.pipe(gulp.dest(srcPath+'../build'));
-
-    exec('cd '+__dirname, function(){
-        exec('tsc', function(error, stdout, stderr) {
-            if (error) console.error(error.toString());
-            console.log(stdout);
-            console.error(stderr);
-            done(error);
-        });
+    let tsProject = ts.createProject("./tsconfig.json", {
+        typescript: require('typescript')
     });
 
+    let result = gulp.src("src/**/*.ts")
+        .pipe(ts(tsProject));
+
+    return merge([
+        result.dts.pipe(gulp.dest('./build')),
+        result.js.pipe(gulp.dest('./build'))
+    ]);
 });
 
-gulp.task('tests',['src'], function (done) {
-    // gulp.src(path + "src/**/*.ts")
-    //     .pipe(ts(tsProject))
-    //     .js
-    //     .pipe(gulp.dest(path+'/build'))
-    //     .on('end', function(){ console.log('done', path); done();})
-    // ;
+gulp.task('package', ['src'], function () {
+    let dts = require('dts-bundle');
 
-    // var tsResult = tsProject.src('!*.d.ts') // instead of gulp.src(...)
-    //     .pipe(ts(tsProject));
-    //
-    // tsResult.js.pipe(gulp.dest(srcPath+'../build'));
-
-    exec('cd '+__dirname+'/tests', function(){
-        exec('tsc', function(error, stdout, stderr) {
-            if (error) console.error(error.toString());
-            console.log(stdout);
-            console.error(stderr);
-            done(error);
-        });
+    dts.bundle({
+        name: 'test-ts-build',
+        main: 'build/index.d.ts'
     });
 });
 
-gulp.task('default', ['src', 'tests']);
+gulp.task('default', ['package']);

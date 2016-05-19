@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
-    "removeComments": false,
+    "removeComments": true,
     "preserveConstEnums": true,
     "target":"ES6",
     "moduleResolution": "node",
@@ -9,6 +9,6 @@
     "project":".",
     "sourceMap": true,
     "declaration": true,
-    "outDir": "../build"
+    "outDir": "./build"
   }
 }

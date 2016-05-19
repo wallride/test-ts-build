@@ -1,30 +1,30 @@
 {
   "name": "test-build",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Module 1",
   "engines": {
     "node": ">= 6.2.0"
   },
   "scripts": {
-    "clear-tsc": "rm -rf ./build && rm -rf ./tests/build",
-    "tsc": "node build",
     "test": "mocha ./tests/build/index",
-    "build-test-a": "npm run clear-tsc && npm run tsc && npm test",
-    "prepublish": "npm run build-test-a"
+    "build": "gulp"
   },
   "main": "build/index.js",
   "typescript": {
-    "definition": "build/index.d.ts"
+    "definition": "./build/test-ts-build.d.ts"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "mocha": "^2.4.5",
-    "typescript": "next"
-  },
   "dependencies": {
     "amqplib": "^0.4.1",
     "moment": "^2.13.0"
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-typescript": "2.13.4",
+    "mocha": "^2.4.5",
+    "typescript": "next",
+    "dts-bundle": "0.4.3",
+    "merge2": "1.0.2"
   }
 }

@@ -9,10 +9,6 @@
 *                                               *
 ************************************************/
 
-interface Error {
-    stack?: string;
-}
-
 
 // compat for TypeScript 1.8
 // if you use with --target es3 or --target es5 and use below definitions,
@@ -465,7 +461,6 @@ interface NodeBuffer extends Uint8Array {
     writeFloatBE(value: number, offset: number, noAssert?: boolean): number;
     writeDoubleLE(value: number, offset: number, noAssert?: boolean): number;
     writeDoubleBE(value: number, offset: number, noAssert?: boolean): number;
-    fill(value: any, offset?: number, end?: number): Buffer;
     // TODO: encoding param
     indexOf(value: string | number | Buffer, byteOffset?: number): number;
     // TODO: entries
