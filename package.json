@@ -6,8 +6,10 @@
     "node": ">= 6.2.0"
   },
   "scripts": {
+    "pretest": "cd ./tests && gulp && cd ..",
     "test": "mocha ./tests/build/index",
-    "build": "gulp"
+    "build": "gulp",
+    "prepublish": "npm run build"
   },
   "main": "build/index.js",
   "typescript": {
