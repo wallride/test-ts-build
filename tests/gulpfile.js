@@ -1,9 +1,9 @@
-let gulp = require("gulp");
+var gulp = require("gulp");
 
 gulp.task('src', function () {
-    let ts = require("gulp-typescript");
+    var ts = require("gulp-typescript");
 
-    let tsProject = ts.createProject("./tsconfig.json", {
+    var tsProject = ts.createProject("./tsconfig.json", {
         typescript: require('typescript')
     });
 

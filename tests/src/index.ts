@@ -7,6 +7,7 @@ describe('TEST:', ()=>{
         let c = new lib.C<string>();
  
         console.log(await c.getDate('get the current date'));
+        console.log(await c.getDate('get the current date'));
 
     });
     it('case', async() =>{

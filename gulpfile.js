@@ -21,8 +21,8 @@ gulp.task('package', ['src'], function () {
     let dts = require('dts-bundle');
 
     dts.bundle({
-        name: 'test-ts-build',
-        main: 'build/index.d.ts'
+        name: '@ips.su/test-build',
+        main: './build/index.d.ts'
     });
 });
 

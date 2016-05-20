@@ -8,11 +8,5 @@
     "declaration": true,
     "rootDir": "./src",
     "outDir": "./build"
-  },
-  "exclude": [
-    "tests",
-    "build",
-    "node_modules",
-    "typings"
-  ]
+  }
 }

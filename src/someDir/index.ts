@@ -6,6 +6,6 @@ export class C<T> {
         return moment().format('YYYY-MM-DD');
     }
     async getAMQP():Promise<amqp.Connection>{
-        return null;
+        return null;    
     }
 }

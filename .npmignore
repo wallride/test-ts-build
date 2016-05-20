@@ -1,4 +1,9 @@
-/.idea
-.npmignore
-.gitignore
-*.log
+.idea
+src
+tests
+typings
+tsconfig.json
+tsd.json
+gulpfile.js
+build/**/*.d.ts
+!build/@ips.su/test-build.d.ts

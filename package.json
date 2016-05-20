@@ -1,6 +1,6 @@
 {
-  "name": "test-build",
-  "version": "1.0.0",
+  "name": "@ips.su/test-build",
+  "version": "1.0.40",
   "description": "Module 1",
   "engines": {
     "node": ">= 6.2.0"
@@ -8,12 +8,12 @@
   "scripts": {
     "pretest": "cd ./tests && gulp && cd ..",
     "test": "mocha ./tests/build/index",
-    "build": "gulp",
+    "build": "rm -rf ./build && gulp",
     "prepublish": "npm run build"
   },
-  "main": "build/index.js",
+  "main": "./build/index.js",
   "typescript": {
-    "definition": "./build/test-ts-build.d.ts"
+    "definition": "./build/@ips.su/test-build.d.ts"
   },
   "author": "",
   "license": "ISC",
